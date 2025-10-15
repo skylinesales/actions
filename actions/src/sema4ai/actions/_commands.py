@@ -225,7 +225,7 @@ def _os_exit(retcode: int):
                 children_processes = list(curr_process.children(recursive=True))
 
             try:
-                names = ",".join(f"{x.name()} ({x.pid})" for x in children_processes)
+                names = ",".join(f"{x.name()} (x.pid)" for x in children_processes)
             except Exception as e:
                 log.debug(f"Exception when collecting process names: {e}")
                 names = "<unable to get>"
