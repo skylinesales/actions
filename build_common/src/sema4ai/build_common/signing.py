@@ -132,7 +132,7 @@ def _sign_macos_executable(root_dir: Path, target_executable: Path) -> None:
         "======================= codesign display output ============================="
     )
     stdout, stderr = run_and_capture_output(
-        ["codesign", "--verify", "--verbose=4", "--display", str(target_executable)]
+        ["codesign", "--display", "--verbose=4", str(target_executable)]
     )
     print("stdout: ", stdout)
     print("stderr: ", stderr)
