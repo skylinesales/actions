@@ -96,6 +96,7 @@ def test_uri_with(uri, kwargs, new_uri):
     assert uris.uri_with(uri, **kwargs) == new_uri
 
 
+@windows_only
 def test_normalize_drive():
     from sema4ai.common.uris import normalize_drive
 
@@ -104,3 +105,8 @@ def test_normalize_drive():
         assert normalize_drive("X:/Temp") == "x:/Temp"
         assert normalize_drive("temp") == "temp"
         assert normalize_drive("") == ""
+
+
+@windows_only
+def test_unc_without_trailing_slash():
+    assert uris.from_fs_path("//server") == "file://server/"

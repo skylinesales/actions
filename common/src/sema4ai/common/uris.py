@@ -57,9 +57,10 @@ def _normalize_win_path(path):
     # check for authority as used in UNC shares
     # or use the path as given
     if path[:2] == "//":
-        idx = path.index("/", 2)
+        idx = path.find("/", 2)
         if idx == -1:
             netloc = path[2:]
+            path = "/"
         else:
             netloc = path[2:idx]
             path = path[idx:]
